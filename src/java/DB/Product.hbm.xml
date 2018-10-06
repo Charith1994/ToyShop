@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 9:43:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DB.Product" table="product" catalog="thunapaha" optimistic-lock="version">
+        <id name="idproduct" type="java.lang.Integer">
+            <column name="idproduct" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="activeState" class="DB.ActiveState" fetch="select">
+            <column name="active_state_idactive_state" not-null="true" />
+        </many-to-one>
+        <many-to-one name="category" class="DB.Category" fetch="select">
+            <column name="category_idcategory" not-null="true" />
+        </many-to-one>
+        <property name="product" type="string">
+            <column name="product" length="45" />
+        </property>
+        <property name="discription" type="string">
+            <column name="discription" length="500" />
+        </property>
+        <property name="paketWeight" type="string">
+            <column name="paket_weight" length="45" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" length="500" />
+        </property>
+        <property name="warenty" type="string">
+            <column name="warenty" length="45" />
+        </property>
+        <property name="buyingPrice" type="java.lang.Double">
+            <column name="buying_price" precision="22" scale="0" />
+        </property>
+        <property name="sellingPrice" type="java.lang.Double">
+            <column name="selling_price" precision="22" scale="0" />
+        </property>
+        <property name="qty" type="java.lang.Integer">
+            <column name="qty" />
+        </property>
+        <set name="cartRegs" table="cart_reg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.CartReg" />
+        </set>
+        <set name="invoiceRegs" table="invoice_reg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.InvoiceReg" />
+        </set>
+        <set name="reports" table="report" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.Report" />
+        </set>
+        <set name="advertisments" table="advertisment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.Advertisment" />
+        </set>
+        <set name="grnRegs" table="grn_reg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.GrnReg" />
+        </set>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.Order" />
+        </set>
+        <set name="imageses" table="images" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_idproduct" not-null="true" />
+            </key>
+            <one-to-many class="DB.Images" />
+        </set>
+    </class>
+</hibernate-mapping>

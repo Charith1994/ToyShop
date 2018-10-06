@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 9:43:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DB.Distric" table="distric" catalog="thunapaha" optimistic-lock="version">
+        <id name="idDistric" type="java.lang.Integer">
+            <column name="idDistric" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="province" class="DB.Province" fetch="select">
+            <column name="province_idprovince" not-null="true" />
+        </many-to-one>
+        <property name="distric" type="string">
+            <column name="distric" length="45" />
+        </property>
+        <property name="diliveryCost" type="java.lang.Double">
+            <column name="dilivery_cost" precision="22" scale="0" />
+        </property>
+        <set name="adresses" table="adress" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Distric_idDistric" not-null="true" />
+            </key>
+            <one-to-many class="DB.Adress" />
+        </set>
+        <set name="invoices" table="invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Distric_idDistric" not-null="true" />
+            </key>
+            <one-to-many class="DB.Invoice" />
+        </set>
+    </class>
+</hibernate-mapping>

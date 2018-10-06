@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 9:43:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DB.ActiveState" table="active_state" catalog="thunapaha" optimistic-lock="version">
+        <id name="idactiveState" type="java.lang.Integer">
+            <column name="idactive_state" />
+            <generator class="identity" />
+        </id>
+        <property name="stateType" type="string">
+            <column name="state_type" length="45" />
+        </property>
+        <set name="reports" table="report" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="active_state_idactive_state" not-null="true" />
+            </key>
+            <one-to-many class="DB.Report" />
+        </set>
+        <set name="invoices" table="invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="active_state_idactive_state" not-null="true" />
+            </key>
+            <one-to-many class="DB.Invoice" />
+        </set>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="active_state_idactive_state" not-null="true" />
+            </key>
+            <one-to-many class="DB.User" />
+        </set>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="active_state_idactive_state" not-null="true" />
+            </key>
+            <one-to-many class="DB.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

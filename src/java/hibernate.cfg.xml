@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/thunapaha?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">123</property>
+    <mapping resource="DB/Adress.hbm.xml"/>
+    <mapping resource="DB/User.hbm.xml"/>
+    <mapping resource="DB/UserType.hbm.xml"/>
+    <mapping resource="DB/Grn.hbm.xml"/>
+    <mapping resource="DB/CartReg.hbm.xml"/>
+    <mapping resource="DB/PaymentMethod.hbm.xml"/>
+    <mapping resource="DB/Advertisment.hbm.xml"/>
+    <mapping resource="DB/InvoiceReg.hbm.xml"/>
+    <mapping resource="DB/Images.hbm.xml"/>
+    <mapping resource="DB/Report.hbm.xml"/>
+    <mapping resource="DB/Category.hbm.xml"/>
+    <mapping resource="DB/Province.hbm.xml"/>
+    <mapping resource="DB/GrnReg.hbm.xml"/>
+    <mapping resource="DB/Distric.hbm.xml"/>
+    <mapping resource="DB/Order.hbm.xml"/>
+    <mapping resource="DB/ActiveState.hbm.xml"/>
+    <mapping resource="DB/Product.hbm.xml"/>
+    <mapping resource="DB/Invoice.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

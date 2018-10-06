@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 9:43:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DB.Invoice" table="invoice" catalog="thunapaha" optimistic-lock="version">
+        <id name="idinvoice" type="java.lang.Integer">
+            <column name="idinvoice" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="activeState" class="DB.ActiveState" fetch="select">
+            <column name="active_state_idactive_state" not-null="true" />
+        </many-to-one>
+        <many-to-one name="distric" class="DB.Distric" fetch="select">
+            <column name="Distric_idDistric" not-null="true" />
+        </many-to-one>
+        <many-to-one name="paymentMethod" class="DB.PaymentMethod" fetch="select">
+            <column name="payment_method_idpayment_method" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <set name="invoiceRegs" table="invoice_reg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="invoice_idinvoice" not-null="true" />
+            </key>
+            <one-to-many class="DB.InvoiceReg" />
+        </set>
+        <set name="reports" table="report" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="invoice_idinvoice" not-null="true" />
+            </key>
+            <one-to-many class="DB.Report" />
+        </set>
+    </class>
+</hibernate-mapping>

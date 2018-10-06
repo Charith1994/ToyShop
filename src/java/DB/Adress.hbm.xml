@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 9:43:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DB.Adress" table="adress" catalog="thunapaha" optimistic-lock="version">
+        <id name="idAdress" type="java.lang.Integer">
+            <column name="idAdress" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="distric" class="DB.Distric" fetch="select">
+            <column name="Distric_idDistric" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <property name="line1" type="string">
+            <column name="Line1" length="60" />
+        </property>
+        <property name="line2" type="string">
+            <column name="Line2" length="60" />
+        </property>
+        <property name="line3" type="string">
+            <column name="Line3" length="60" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 9:43:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DB.PaymentMethod" table="payment_method" catalog="thunapaha" optimistic-lock="version">
+        <id name="idpaymentMethod" type="int">
+            <column name="idpayment_method" />
+            <generator class="assigned" />
+        </id>
+        <property name="paymentMethod" type="string">
+            <column name="payment_method" length="45" />
+        </property>
+        <set name="invoices" table="invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="payment_method_idpayment_method" not-null="true" />
+            </key>
+            <one-to-many class="DB.Invoice" />
+        </set>
+    </class>
+</hibernate-mapping>
